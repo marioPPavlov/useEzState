@@ -6,10 +6,10 @@ type UpdateFuncParamter<T> = Partial<T> | ((prev: T) => Partial<T>);
  * A custom hook that provides a state and a function to update it.
  * The update function accepts a partial state object or a function that returns a partial state object.
  * Intended to be used as an alternative for React.useState when you have too many state variables.
- * 
+ *
  * Best used with TypeScript as it provides type safety for the state object.
  * Recommended to set the the flag `"exactOptionalPropertyTypes": true` in your tsconfig.json to ensure the finest type safety.
- * 
+ *
  * @param initialState The initial state.
  * @param reducer A optional function that accepts the current and next state then returns a new state.
  * @returns A tuple with the state and the update function.
