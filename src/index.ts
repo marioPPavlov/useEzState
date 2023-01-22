@@ -19,7 +19,7 @@ type UpdateFuncParamter<T> = Partial<T> | ((prev: T) => Partial<T>);
  * console.log(name); // Jane
  * console.log(lastName); // Doe
  */
-export const useEzState = <T extends Record<string, unknown>>(
+const useEzState = <T extends Record<string, unknown>>(
   initialState: T,
   reducer = (prev: T, next: Partial<T>) => ({ ...prev, ...next })
 ): readonly [T, (next: UpdateFuncParamter<T>) => void] => {
@@ -38,3 +38,5 @@ export const useEzState = <T extends Record<string, unknown>>(
 
   return [state, update] as const;
 };
+
+export default useEzState;
