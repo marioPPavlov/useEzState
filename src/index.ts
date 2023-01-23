@@ -22,7 +22,8 @@ type UpdateFuncParamter<T> = Partial<T> | ((prev: T) => Partial<T>);
 const useEzState = <T extends Record<string, unknown>>(
   initialState: T,
   reducer = (prev: T, next: Partial<T>) => ({ ...prev, ...next })
-): readonly [T, (next: UpdateFuncParamter<T>) => void] => {
+): readonly [T, (next: UpdateFuncParamter<T>) => void, () => void] => {
+  const initialStateRef = React.useRef(initialState);
   const [state, setState] = React.useState(initialState);
   const reducerRef = React.useRef(reducer);
   reducerRef.current = reducer;
@@ -32,11 +33,14 @@ const useEzState = <T extends Record<string, unknown>>(
       setState(prev => reducerRef.current(prev, next(prev)));
       return;
     }
-
     setState(state => reducerRef.current(state, next));
   }, []);
 
-  return [state, update] as const;
+  const resetState = React.useCallback(() => {
+    setState(initialStateRef.current);
+  }, []);
+
+  return [state, update, resetState] as const;
 };
 
 export default useEzState;
