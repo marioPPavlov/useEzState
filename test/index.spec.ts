@@ -1,4 +1,4 @@
-import { useEzState } from '../src';
+import useEzState from '../src';
 import { renderHook, act } from '@testing-library/react';
 
 test('updating single property should update only specified property in the state', () => {
@@ -104,4 +104,29 @@ test("useEzState's update function should be able to derive state via an update 
   });
 
   expect(result.current[0].value).toBe(6);
+});
+
+test('useEzState should provide method to reset the state', () => {
+  const { result } = renderHook(() =>
+    useEzState({
+      age: 10,
+      name: 'Daniel',
+    })
+  );
+
+  act(() => {
+    result.current[1]({
+      age: 20,
+      name: 'John',
+    });
+  });
+
+  const resetState = result.current[2];
+
+  act(() => {
+    resetState();
+  });
+
+  expect(result.current[0].age).toBe(10);
+  expect(result.current[0].name).toBe('Daniel');
 });

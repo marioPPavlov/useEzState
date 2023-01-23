@@ -10,13 +10,21 @@ Much like *React.useState* the custom hook *useEzState* accepts an initial state
 ```typescript
 import useEzState from "use-ez-state"
 
-const [{name, lastName}, update] = useEzState({ name: 'John', lastName: 'Smith' });
-update({ name: 'Jack' });
+const [{name, age}, update] = useEzState({ name: 'John', age: 32 });
 
+update({ name: 'Jack' });
 console.log(name); // Jack
-console.log(lastName); // Doe
+console.log(age); // 32
+```
+```typescript
+// You can also update multiple state variables
+update({ name: 'Jill', age: 21 });
+console.log(name); // Jill
+console.log(age); // 21
 ```
 The type of the state is inferred from the initial state and the update function accepts an object containing a subtype of the state and only those properties will be updated in the state. 
+
+You can play around with *useEzState* on *[StackBlitz ](https://stackblitz.com/edit/react-ts-7ewjfr?file=App.tsx)*
 
 ## When to use useEzState
 
