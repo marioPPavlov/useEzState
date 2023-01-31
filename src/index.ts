@@ -12,7 +12,7 @@ type UpdateFuncParamter<T> = Partial<T> | ((prev: T) => Partial<T>);
  *
  * @param initialState The initial state.
  * @param reducer A optional function that accepts the current and next state then returns a new state.
- * @returns A tuple with the state and the update function.
+ * @returns A tuple with the state, the state update function and a 'resetState' function - [state, update, resetState]
  * @example
  * const [{name, lastName}, update] = useEzState({ name: 'John', lastName: 'Doe' });
  * update({ name: 'Jane' });

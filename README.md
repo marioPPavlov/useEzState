@@ -3,7 +3,11 @@
 useEzState is a custom React hook and a simple way to solve *"React.useState hell"*.  
 It sits somewhere between *useState* and *useReducer* and excels when you have multiple state variables inside the same component. Intended to be used with typescript in order to achieve typesafe state updates.
 
-## Basic usage:
+## Installation and Usage:
+
+```shell
+npm i use-ez-state
+```
 
 Much like *React.useState* the custom hook *useEzState* accepts an initial state parameter - with the difference that it always has to be an object. It then returns the current state and an update function as a tuple - *[state, update]*
 
