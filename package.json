@@ -23,7 +23,7 @@
     "name": "marioppavlov"
   },
   "engines": {
-    "node": ">=16.0"
+    "node": ">=14.0"
   },
   "keywords": [
     "react",
@@ -32,7 +32,7 @@
     "useState"
   ],
   "peerDependencies": {
-    "react": "^18.x"
+    "react": "^16.x"
   },
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
